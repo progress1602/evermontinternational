@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-gold: #FFBF00;
+  --color-gold-dark: #cc9900;
+  --color-gold-light: #ffd54f;
+  
+  --color-black-pure: #000000;
+  --color-black-deep: #050505;
+  --color-black-charcoal: #0A0A0A;
+  --color-black-soft: #111111;
+
+  /* Theme semantic variables mapping */
+  --color-app-bg: var(--bg-primary);
+  --color-app-text: var(--text-primary);
+  --color-app-border: var(--border-primary);
+  --color-app-card: var(--card-bg);
+}
+
+@layer base {
+  :root {
+    --bg-primary: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --border-primary: #1c1c1f;
+    --card-bg: #111111;
+    --sidebar-bg: #0d0d0d;
+  }
+
+  :root.light {
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #52525b;
+    --border-primary: #f4f4f5;
+    --card-bg: #ffffff;
+    --sidebar-bg: #fafafa;
+  }
+
+  body {
+    @apply bg-app-bg text-app-text font-sans antialiased transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .sleek-card {
+    @apply bg-app-card border border-app-border rounded-[2rem] shadow-sm hover:shadow-gold/5 hover:border-gold/20 transition-all duration-500;
+  }
+
+  .premium-blur {
+    backdrop-filter: blur(20px);
+    background: rgba(var(--bg-primary-rgb, 0, 0, 0), 0.8);
+  }
+
+  .gold-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-gold via-gold-light to-gold-dark;
+  }
+
+  .sleek-button-gold {
+    @apply bg-gold text-black hover:scale-[1.02] active:scale-95 font-black uppercase tracking-widest text-[10px] rounded-xl px-8 py-4 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-gold/20;
+  }
+
+  .sleek-button-outline {
+    @apply border border-gold text-gold hover:bg-gold hover:text-black font-black uppercase tracking-widest text-[10px] rounded-xl px-8 py-4 flex items-center justify-center gap-2 transition-all duration-300;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* 3D Transform Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+}
